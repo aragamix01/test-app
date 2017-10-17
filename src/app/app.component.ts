@@ -9,7 +9,5 @@ import {
 })
 export class AppComponent {
 
-  selectedCity: string;
-
-  constructor() {  }
+  constructor() { }
 }
