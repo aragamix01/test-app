@@ -1,8 +1,8 @@
 <p-panel header="Project">
   <app-customer (customerChangeEvent)="projects=$event"></app-customer>
   <hr>
-  <p-dataTable [value]="projects" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" selectionMode="single"
-    [(selection)]="selProject" (onRowSelect)="onRowSelect($event)">
+  <p-dataTable [value]="projects" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" 
+  selectionMode="single" (onRowSelect)="onRowSelect($event)" >
     <p-column header="ลำดับ" [style]="{width:'10%'}">
       <ng-template let-rowIndex="rowIndex" pTemplate="rowexpansion">
         {{rowIndex+1}}

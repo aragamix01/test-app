@@ -1,0 +1,20 @@
+<p-panel header="Details">
+  <p-dataTable [value]="details" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
+  sortField="positionName" rowGroupMode="subheader" groupField="positionName" 
+  selectionMode="single" (onRowSelect)="onRowSelect($event)"
+  >
+    <ng-template pTemplate="rowgroupheader" let-rowData>{{rowData['positionName']}}</ng-template>
+    <p-column header="ลำดับ" [style]="{width:'6%'}">
+      <ng-template let-rowIndex="rowIndex" pTemplate="rowexpansion">
+        {{rowIndex+1}}
+      </ng-template>
+    </p-column>
+    <p-column field="empNo" header="รหัสพนักงาน" [style]="{width:'11%'}"></p-column>
+    <p-column field="name" header="Name" [style]="{width:'25%'}"></p-column>
+    <p-column field="startDate" header="Start Date" ></p-column>
+    <p-column field="endDate" header="End Date" ></p-column>
+    <p-column field="duration" header="Duration" ></p-column>
+    <p-column field="working" header="Working(%)" ></p-column>
+    <p-column field="assign" header="Assigned MM" ></p-column>
+  </p-dataTable>
+</p-panel>

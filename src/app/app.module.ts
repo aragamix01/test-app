@@ -1,3 +1,7 @@
+import { ChartModule } from 'primeng/primeng';
+import { AppService } from './app.service';
+import { Route, RouterModule, Routes } from '@angular/router';
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule  } from '@angular/forms';
@@ -14,6 +18,15 @@ import {DataTableModule, SharedModule} from 'primeng/primeng';
 import { ProjectComponent } from './index-page/project/project.component';
 import { IndexPageComponent } from './index-page/index-page.component';
 import { CustomerComponent } from './index-page/project/customer/customer.component';
+import { DetailPageComponent } from './detail-page/detail-page.component';
+import { EmpPageComponent } from './emp-page/emp-page.component';
+
+const appRoutes: Routes = [
+  { path: 'index', component: IndexPageComponent },
+  { path: '',   redirectTo: '/index', pathMatch: 'full' },
+  { path: 'detail', component: DetailPageComponent },
+  { path: 'employee', component: EmpPageComponent }
+];
 
 @NgModule({
   declarations: [
@@ -22,9 +35,12 @@ import { CustomerComponent } from './index-page/project/customer/customer.compon
     FileUploadComponent,
     ProjectComponent,
     IndexPageComponent,
-    CustomerComponent
+    CustomerComponent,
+    DetailPageComponent,
+    EmpPageComponent
   ],
   imports: [
+    ChartModule,
     BrowserModule,
     DropdownModule,
     FieldsetModule,
@@ -34,9 +50,11 @@ import { CustomerComponent } from './index-page/project/customer/customer.compon
     CollapseModule.forRoot(),
     FileUploadModule,
     DataTableModule,
-    SharedModule
+    SharedModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

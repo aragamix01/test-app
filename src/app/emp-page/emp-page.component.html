@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10" *ngIf="isValue">
+      <div class="card">
+        <div class="card-header">
+          ข้อมูลพนักงาน
+        </div>
+        <div class="card-block">
+          รหัสพนักงาน : {{ emps[0].empNo }}
+          <br> ชื่อ : {{ emps[0].name }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card" style="margin-top:20px;">
+          <div class="card-header">
+            กราฟ
+          </div>
+          <div class="card-block">
+              <p-chart type="pie" [data]="data" [options]="options"></p-chart>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,38 +1,33 @@
+import { Http, Response } from '@angular/http';
+import { Injectable } from '@angular/core';
 import {
   ProjectList
 } from './project.model';
 
+@Injectable()
 export class ProjectService {
-  projects: ProjectList[] = [
-    new ProjectList(
-      1,
-      '5002',
-      'จ้างพัฒนาระบบสารสนเทศรับแจ้งซ่อม/ปัญหาภายในโครงการ (Customer Caring)',
-      1,
-      new Date('2017-09-18'),
-      new Date('2017-10-17'),
-      new Date('2017-08-24'),
-      5,
-      15),
-    new ProjectList(
-      2,
-      '5003',
-      'จ้างพัฒนาระบบสารสนเทศรับแจ้งซ่อม/ปัญหาภายในโครงการ2 (Customer Caring)',
-      2,
-      new Date('2017-09-18'),
-      new Date('2017-10-17'),
-      new Date('2017-08-24'),
-      5,
-      15),
-  ];
-
+  projects: ProjectList[] = [];
   displayProjects: ProjectList[] = [];
 
-  getProject() {
-    return this.projects.slice();
+  constructor(private http: Http) {}
+
+
+  getProject(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.http.get('http://localhost:8080/JSFCDIMavenProject/crunchify/getproject')
+        .subscribe(
+          (res: Response) => {
+            resolve(res.json());
+            this.projects = res.json();
+          }
+        );
+      }, 200);
+    });
   }
 
   getProjectsByCmCode(cmCode: number) {
+    console.log(cmCode);
     this.displayProjects = this.projects.slice();
     let i = 0;
     for (const dp of this.displayProjects){
